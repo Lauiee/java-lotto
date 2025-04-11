@@ -1,7 +1,10 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class Lottos {
@@ -19,6 +22,16 @@ public class Lottos {
                 .toList();
 
         return new Lottos(lottos);
+    }
+
+    public LottoResults winningResult(WinningNumbers winningNumbers){
+        List<LottoResult> lottoResults = new ArrayList<>();
+
+        for (Lotto lotto:lottos){
+            lottoResults.add(winningNumbers.countMatch(lotto.getNumbers()));
+        }
+
+        return new LottoResults(lottoResults);
     }
 
     public List<Lotto> getLottos() {
