@@ -19,7 +19,7 @@ public class Lotto {
     }
 
     public boolean isContainLottoNumber(Integer lottoNumber){
-        return this.lottoNumbers.contains(lottoNumber);
+        return this.lottoNumbers.stream().map(LottoNumber::getLottoNumber).toList().contains(lottoNumber);
     }
 
     private void validate(List<Integer> numbers) {

@@ -1,7 +1,6 @@
 package lotto.model;
 
 public class LottoResult {
-    public static final int FIVE_WITH_BONUS = 7;
     private static final int BONUS = 1;
 
     private final int winningCount;
@@ -12,16 +11,21 @@ public class LottoResult {
         this.bonusMatch = bonusMatch;
     }
 
-    public int countResultWithBonusMatch(){
+    public int getLottoPrize(){
         if (bonusMatch){
-            if (winningCount == 5) return FIVE_WITH_BONUS;
-            return winningCount + BONUS;
+            if (winningCount == 5) return MatchPrize.getPrizeByMatch(winningCount, true);
         }
-        return winningCount;
+        return MatchPrize.getPrizeByMatch(winningCount, null);
     }
 
-    public int getLottoPrize(){
-        return MatchPrize.getPrizeByMatch(winningCount, bonusMatch);
+    public MatchPrize matchMatchPrize(){
+        if (bonusMatch) {
+            if (winningCount != 5) {
+                return MatchPrize.findMatchPrize(winningCount+1, null);
+            }
+            return MatchPrize.FIVE_MATCH_WITH_BONUS;
+        }
+        return MatchPrize.findMatchPrize(winningCount,null);
     }
 
     public boolean isBonusMatch() {

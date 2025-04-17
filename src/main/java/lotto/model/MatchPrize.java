@@ -42,4 +42,12 @@ public enum MatchPrize {
                 .getPrize();
     }
 
+    public static MatchPrize findMatchPrize(int matchCount, Boolean bonusMatch) {
+        return Arrays.stream(MatchPrize.values())
+                .filter(matchPrize -> matchPrize.getMatchCount() == matchCount)
+                .filter(matchPrize -> matchPrize.getBonusMatch() == bonusMatch)
+                .findFirst()
+                .orElse(MatchPrize.NO_MATCH);
+    }
+
 }

@@ -20,7 +20,7 @@ public class WinningNumbers {
                 count++;
             }
         }
-        return new LottoResult(count, lottoNumbers.contains(bonusNumber));
+        return new LottoResult(count, lottoNumbers.contains(bonusNumber.getLottoNumber()));
     }
 
     private void validateBonusNumber(int bonusNumber){

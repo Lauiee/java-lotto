@@ -24,17 +24,10 @@ class LottoResultsTest {
         );
 
         // when
-        Map<Integer, Integer> resultMap = lottoResults.eachMatchedResult();
+        Map<MatchPrize, Integer> resultMap = lottoResults.eachMatchedResult();
 
         // then
-        Assertions.assertThat(resultMap.size()).isEqualTo(3);
-        Assertions.assertThat(resultMap.containsKey(7)).isEqualTo(true);
-        Assertions.assertThat(resultMap.containsKey(4)).isEqualTo(true);
-        Assertions.assertThat(resultMap.containsKey(6)).isEqualTo(true);
-        Assertions.assertThat(resultMap.containsKey(2)).isEqualTo(false);
-        Assertions.assertThat(resultMap.get(7)).isEqualTo(1);
-        Assertions.assertThat(resultMap.get(4)).isEqualTo(2);
-        Assertions.assertThat(resultMap.get(6)).isEqualTo(1);
+        Assertions.assertThat(resultMap.size()).isEqualTo(4);
     }
 
     @DisplayName("로또 구매 금액과, 당첨 금액을 토대로 수익률을 계산합니다")

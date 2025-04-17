@@ -29,14 +29,11 @@ public class LottoResults {
         return new BigDecimal(ratio.toPlainString()); // 일반 숫자 형식으로 변환
     }
 
-    public Map<Integer, Integer> eachMatchedResult() {
-        Map<Integer, Integer> matchedMap = new HashMap<>();
+    public Map<MatchPrize, Integer> eachMatchedResult() {
+        Map<MatchPrize, Integer> matchedMap = new HashMap<>();
 
         for (LottoResult lottoResult : lottoResults) {
-            int matchResult = lottoResult.countResultWithBonusMatch();
-            if (matchResult >= 3){
-                matchedMap.merge(lottoResult.countResultWithBonusMatch(),1,Integer::sum);
-            }
+            matchedMap.merge(lottoResult.matchMatchPrize(),1,Integer::sum);
         }
 
         return matchedMap;
