@@ -34,11 +34,11 @@ public class OutputView {
 
         while(true){
             if (i == 7){
-                System.out.printf(ViewMessage.OUTPUT_FIVE_WITH_BONUS.getMessage(), MatchPrize.getPrizeByMatch(i), matchedMap.getOrDefault(i, 0));
+                System.out.printf(ViewMessage.OUTPUT_FIVE_WITH_BONUS.getMessage(), MatchPrize.getPrizeByMatch(i,Boolean.TRUE), matchedMap.getOrDefault(i, 0));
                 i = 6;
                 continue;
             }
-            System.out.printf(ViewMessage.OUTPUT_RESULT.getMessage(), i, MatchPrize.getPrizeByMatch(i), matchedMap.getOrDefault(i, 0));
+            System.out.printf(ViewMessage.OUTPUT_RESULT.getMessage(), i, MatchPrize.getPrizeByMatch(i,null), matchedMap.getOrDefault(i, 0));
 
             if (i==6) break;
             if (i == 5){

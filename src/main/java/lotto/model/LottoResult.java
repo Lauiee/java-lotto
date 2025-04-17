@@ -21,7 +21,7 @@ public class LottoResult {
     }
 
     public int getLottoPrize(){
-        return MatchPrize.getPrizeByMatch(countResultWithBonusMatch());
+        return MatchPrize.getPrizeByMatch(winningCount, bonusMatch);
     }
 
     public boolean isBonusMatch() {
