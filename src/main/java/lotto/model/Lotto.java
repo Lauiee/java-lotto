@@ -1,25 +1,24 @@
 package lotto.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<LottoNumber> lottoNumbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.lottoNumbers = numbers.stream().map(LottoNumber::new).toList();
     }
 
-    public List<Integer> getNumbers() {
-        return new ArrayList<>(numbers);
+    public List<Integer> getLottoNumbers() {
+        return new ArrayList<>(lottoNumbers.stream().map(LottoNumber::getLottoNumber).toList());
     }
 
     public boolean isContainLottoNumber(Integer lottoNumber){
-        return this.numbers.contains(lottoNumber);
+        return this.lottoNumbers.contains(lottoNumber);
     }
 
     private void validate(List<Integer> numbers) {
@@ -31,10 +30,5 @@ public class Lotto {
         if (set.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복을 허용하지 않습니다.");
         }
-
-        if (numbers.stream().anyMatch(n -> n < 1 || n > 45)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 숫자만 가능합니다.");
-        }
-
     }
 }

@@ -32,8 +32,8 @@ class LottoTest {
         Lotto newLotto = new Lotto(new ArrayList<>(List.of(6,5,4,3,2,1)));
 
 
-        Assertions.assertThat(newLotto.getNumbers().getFirst()).isEqualTo(1);
-        Assertions.assertThat(newLotto.getNumbers().getLast()).isEqualTo(6);
+        Assertions.assertThat(newLotto.getLottoNumbers().getFirst()).isEqualTo(1);
+        Assertions.assertThat(newLotto.getLottoNumbers().getLast()).isEqualTo(6);
     }
 
     // 아래의 예외 테스트들의 경우, 정렬을 진행하기 전에 검증 단계에서 예외가 발생

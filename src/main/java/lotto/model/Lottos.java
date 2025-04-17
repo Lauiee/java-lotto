@@ -26,7 +26,7 @@ public class Lottos {
         List<LottoResult> lottoResults = new ArrayList<>();
 
         for (Lotto lotto:lottos){
-            lottoResults.add(winningNumbers.countMatch(lotto.getNumbers()));
+            lottoResults.add(winningNumbers.countMatch(lotto.getLottoNumbers()));
         }
 
         return new LottoResults(lottoResults);
@@ -35,7 +35,7 @@ public class Lottos {
     public List<Lotto> getLottos() {
         // 깊은 복사를 통해 참조 넘기지 않도록 구현
         return lottos.stream()
-                .map(lotto -> new Lotto(lotto.getNumbers()))
+                .map(lotto -> new Lotto(lotto.getLottoNumbers()))
                 .toList();
     }
 
