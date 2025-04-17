@@ -13,6 +13,7 @@ public class Lotto {
         this.lottoNumbers = numbers.stream().map(LottoNumber::new).toList();
     }
 
+
     public List<Integer> getLottoNumbers() {
         return new ArrayList<>(lottoNumbers.stream().map(LottoNumber::getLottoNumber).toList());
     }

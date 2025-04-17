@@ -4,6 +4,7 @@ import static lotto.util.InputRetry.retry;
 
 import java.util.List;
 import java.util.Set;
+import lotto.model.Lotto;
 import lotto.model.LottoResults;
 import lotto.model.Lottos;
 import lotto.model.WinningNumbers;
@@ -25,7 +26,7 @@ public class LottoController {
         Lottos lottos = retry(this::getLottos);
 
         // 당첨 번호 및 보너스 번호 입력
-        List<Integer> inputNumbers = retry(this::getWinningNumbers);
+        Lotto inputNumbers = retry(this::getWinningNumbers);
         int bonusNumber = retry(this::getBonusNumber);
         WinningNumbers winningNumbers = new WinningNumbers(inputNumbers, bonusNumber);
 
@@ -40,9 +41,9 @@ public class LottoController {
         return bonusNumber;
     }
 
-    private List<Integer> getWinningNumbers() {
+    private Lotto getWinningNumbers() {
         List<Integer> inputNumbers = inputView.winningNumberInput();
-        return inputNumbers;
+        return new Lotto(inputNumbers);
     }
 
     private Lottos getLottos() {
