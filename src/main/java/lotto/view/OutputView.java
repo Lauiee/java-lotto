@@ -1,6 +1,8 @@
 package lotto.view;
 
 import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import lotto.model.Lotto;
 import lotto.model.LottoResults;
@@ -16,7 +18,9 @@ public class OutputView {
 
     public void printLottos(Lottos lottos){
         for (Lotto lotto : lottos.getLottos()) {
-            System.out.println(lotto.getNumbers());
+            List<Integer> lottoNumbers = lotto.getNumbers();
+            Collections.sort(lottoNumbers);
+            System.out.println(lottoNumbers);
         }
     }
 
