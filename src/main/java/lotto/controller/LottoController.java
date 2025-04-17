@@ -1,7 +1,9 @@
 package lotto.controller;
 
+import static lotto.util.InputRetry.retry;
+
+import java.util.List;
 import java.util.Set;
-import java.util.function.Supplier;
 import lotto.model.LottoResults;
 import lotto.model.Lottos;
 import lotto.model.WinningNumbers;
@@ -20,11 +22,11 @@ public class LottoController {
 
     public void run(){
 
-        Lottos lottos = process(this::getLottos);
+        Lottos lottos = retry(this::getLottos);
 
         // 당첨 번호 및 보너스 번호 입력
-        Set<Integer> inputNumbers = process(this::getWinningNumbers);
-        int bonusNumber = process(this::getBonusNumber);
+        List<Integer> inputNumbers = retry(this::getWinningNumbers);
+        int bonusNumber = retry(this::getBonusNumber);
         WinningNumbers winningNumbers = new WinningNumbers(inputNumbers, bonusNumber);
 
         // 당첨 결과 확인
@@ -38,8 +40,8 @@ public class LottoController {
         return bonusNumber;
     }
 
-    private Set<Integer> getWinningNumbers() {
-        Set<Integer> inputNumbers = inputView.winningNumberInput();
+    private List<Integer> getWinningNumbers() {
+        List<Integer> inputNumbers = inputView.winningNumberInput();
         return inputNumbers;
     }
 
@@ -51,12 +53,4 @@ public class LottoController {
         return lottos;
     }
 
-    private <T> T process(Supplier<T> supplier){
-        try{
-            return supplier.get();
-        } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());;
-            return process(supplier);
-        }
-    }
 }

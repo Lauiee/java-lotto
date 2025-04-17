@@ -1,7 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class InputView {
@@ -14,12 +16,12 @@ public class InputView {
         return money;
     }
 
-    public Set<Integer> winningNumberInput(){
+    public List<Integer> winningNumberInput(){
         System.out.println();
         String input = readInput(ViewMessage.INPUT_WINNINGNUMBER.getMessage());
         validateDelimiter(input);
         String[] split = input.split(",", -1);
-        Set<Integer> winningNumber = new HashSet<>();
+        List<Integer> winningNumber = new ArrayList<>();
         for (String s : split) {
             winningNumber.add(Integer.parseInt(s));
         }

@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +27,7 @@ class LottosTest {
     void 로또_당첨_결과_추출(){
         // given
         int price = 8000;
-        WinningNumbers winningNumbers = new WinningNumbers(Set.of(1,2,3,4,5,6), 7);
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1,2,3,4,5,6), 7);
         Lottos lottos = Lottos.from(8000);
 
         // when
