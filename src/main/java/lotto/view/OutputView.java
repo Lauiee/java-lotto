@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -28,17 +29,19 @@ public class OutputView {
         System.out.println();
         System.out.println(ViewMessage.OUTPUT_WINNING_COUNT.getMessage());
 
-        Map<Integer, Integer> matchedMap = lottoResults.eachMatchedResult();
+        Map<MatchPrize, Integer> matchedMap = lottoResults.eachMatchedResult();
+
+        DecimalFormat formatter = new DecimalFormat("###,###");
 
         int i = 3;
 
         while(true){
             if (i == 7){
-                System.out.printf(ViewMessage.OUTPUT_FIVE_WITH_BONUS.getMessage(), MatchPrize.getPrizeByMatch(i,Boolean.TRUE), matchedMap.getOrDefault(i, 0));
+                System.out.printf(ViewMessage.OUTPUT_FIVE_WITH_BONUS.getMessage(), formatter.format(MatchPrize.getPrizeByMatch(5,Boolean.TRUE)), matchedMap.getOrDefault(i, 0));
                 i = 6;
                 continue;
             }
-            System.out.printf(ViewMessage.OUTPUT_RESULT.getMessage(), i, MatchPrize.getPrizeByMatch(i,null), matchedMap.getOrDefault(i, 0));
+            System.out.printf(ViewMessage.OUTPUT_RESULT.getMessage(), i, formatter.format(MatchPrize.getPrizeByMatch(i,null)), matchedMap.getOrDefault(MatchPrize.findMatchPrize(i,null), 0));
 
             if (i==6) break;
             if (i == 5){

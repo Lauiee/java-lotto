@@ -14,12 +14,12 @@ class LottoResultTest {
         LottoResult lottoResult2 = new LottoResult(3, false);
 
         // when
-        int result1 = lottoResult1.countResultWithBonusMatch();
-        int result2 = lottoResult2.countResultWithBonusMatch();
+        MatchPrize result1 = lottoResult1.matchMatchPrize();
+        MatchPrize result2 = lottoResult2.matchMatchPrize();
 
         // then
-        Assertions.assertThat(result1).isEqualTo(4);
-        Assertions.assertThat(result2).isEqualTo(3);
+        Assertions.assertThat(result1).isEqualTo(MatchPrize.FOUR_MATCH);
+        Assertions.assertThat(result2).isEqualTo(MatchPrize.THREE_MATCH);
     }
 
     @DisplayName("만약 일치 개수가 5개이고, 보너스 번호가 일치하면 7을 반환합니다.")
@@ -29,10 +29,10 @@ class LottoResultTest {
         LottoResult lottoResult = new LottoResult(5, true);
 
         // when
-        int result = lottoResult.countResultWithBonusMatch();
+        MatchPrize result = lottoResult.matchMatchPrize();
 
         // then
-        Assertions.assertThat(result).isEqualTo(7);
+        Assertions.assertThat(result).isEqualTo(MatchPrize.FIVE_MATCH_WITH_BONUS);
     }
 
 
