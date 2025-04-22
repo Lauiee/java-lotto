@@ -27,7 +27,7 @@ class WinningNumbersTest {
     void 당첨_번호_중복(){
         Assertions.assertThatThrownBy(() -> new WinningNumbers(new Lotto(List.of(1,2,3,4,4,5)), 6))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 당첨 번호는 중복을 허용하지 않습니다.");
+                .hasMessage("[ERROR] 로또 번호는 중복을 허용하지 않습니다.");
     }
 
     @DisplayName("당첨 번호 중 1-45의 범위를 벗어나는 값이 있다면 예외가 발생합니다.")
@@ -35,7 +35,7 @@ class WinningNumbersTest {
     void 당첨_번호_범위_벗어남(){
         Assertions.assertThatThrownBy(() -> new WinningNumbers(new Lotto(List.of(1,2,3,4,5,46)), 6))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 당첨 번호는 1~45 사이의 숫자만 가능합니다.");
+                .hasMessage("[ERROR] 로또에 사용되는 번호는 1~45 사이의 숫자만 가능합니다.");
     }
 
     @DisplayName("보너스 번호는 당첨 번호와 중복되어선 안됩니다.")
@@ -43,7 +43,7 @@ class WinningNumbersTest {
     void 보너스_번호_중복(){
         Assertions.assertThatThrownBy(() -> new WinningNumbers(new Lotto(List.of(1,2,3,4,5,6)), 6))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+                .hasMessage("[ERROR] 보너스 번호는 로또 당첨 번호와 중복될 수 없습니다.");
     }
 
     @DisplayName("보너스 번호도 1-45의 범위를 벗어나면 예외가 발생합니다")
@@ -51,6 +51,6 @@ class WinningNumbersTest {
     void 보너스_번호_범위_벗어남(){
         Assertions.assertThatThrownBy(() -> new WinningNumbers(new Lotto(List.of(1,2,3,4,5,6)), 46))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 보너스 번호는 1~45 사이의 숫자만 가능합니다.");
+                .hasMessage("[ERROR] 로또에 사용되는 번호는 1~45 사이의 숫자만 가능합니다.");
     }
 }
