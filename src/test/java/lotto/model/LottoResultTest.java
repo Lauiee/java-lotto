@@ -35,6 +35,4 @@ class LottoResultTest {
         Assertions.assertThat(result).isEqualTo(MatchPrize.FIVE_MATCH_WITH_BONUS);
     }
 
-
-
 }

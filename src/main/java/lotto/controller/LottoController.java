@@ -3,7 +3,6 @@ package lotto.controller;
 import static lotto.util.InputRetry.retry;
 
 import java.util.List;
-import java.util.Set;
 import lotto.model.Lotto;
 import lotto.model.LottoResults;
 import lotto.model.Lottos;

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -18,8 +19,8 @@ class LottoTest {
         Assertions.assertThat(newLotto).isInstanceOf(Lotto.class);
     }
 
-    @DisplayName("생성된 로또는 오름차순으로 정렬됩니다.")
-    @Test
+   // @DisplayName("생성된 로또는 오름차순으로 정렬됩니다.")
+   // @Test 이제 정렬은 뷰 계층으로 넘어감
     void 로또_오름차순_정렬(){
         // 그냥 List.of()를 사용하고 Lotto를 생성하면 문제 발생
         // 왜? List.of()로 생성된 리스트는 '불변'리스트
